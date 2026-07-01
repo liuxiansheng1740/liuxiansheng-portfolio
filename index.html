@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh"><head>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>刘先生量化虚拟盘</title>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>刘先生量化虚拟盘</title>
@@ -83,26 +88,71 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   .stats{grid-template-columns:1.8fr 1fr 1fr 1fr 1fr}
   .sbox.pnl{grid-column:auto}
 }
-</style></head><body>
-<div style="
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: #e0e0e0;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 14px;
-    border-bottom: 2px solid #e94560;
-    font-family: monospace;
-">
-    📡 <b>实时看板</b> →
-    <a href="https://liuxiansheng.cpolar.top" target="_blank" rel="noopener"
-       style="color: #00d4ff; text-decoration: underline; font-weight: bold;">
-        https://liuxiansheng.cpolar.top
-    </a>
-    &nbsp;|&nbsp;
-    📸 本页为快照（07/01 09:23 抓取）
-    &nbsp;|&nbsp;
-    <span style="color: #888;">点击上方链接查看实时数据</span>
+</style>
+<style>
+#offline-bar {
+    display:none;
+    background:#1a1a2e;
+    color:#ccc;
+    padding:8px 12px;
+    text-align:center;
+    font-size:13px;
+    font-family:monospace;
+    border-bottom:2px solid #e03131;
+}
+#offline-bar a { color:#00d4ff; }
+#probe-status {
+    display:block;
+    text-align:center;
+    padding:60px 20px;
+    font-size:16px;
+    color:#888;
+    font-family:monospace;
+}
+#snapshot-wrap { display:none; }
+</style>
+<script>
+(function() {
+    var LIVE_URL = 'https://liuxiansheng.cpolar.top';
+    var HEALTH_URL = LIVE_URL + '/health?t=' + Date.now();
+    
+    function showSnapshot() {
+        document.getElementById('probe-status').style.display = 'none';
+        document.getElementById('snapshot-wrap').style.display = 'block';
+        document.getElementById('offline-bar').style.display = 'block';
+    }
+    
+    function goLive() {
+        window.location.href = LIVE_URL;
+    }
+    
+    // 用Image探测cpolar连通性(跨域无CORS限制)
+    var img = new Image();
+    var resolved = false;
+    
+    img.onload = function() {
+        if (!resolved) { resolved = true; goLive(); }
+    };
+    img.onerror = function() {
+        if (!resolved) { resolved = true; showSnapshot(); }
+    };
+    
+    // 4秒超时
+    setTimeout(function() {
+        if (!resolved) { resolved = true; showSnapshot(); }
+    }, 4000);
+    
+    img.src = HEALTH_URL;
+})();
+</script>
+</head>
+<body>
+<div id="offline-bar">
+    💻 电脑已关机 — 以下为最近快照 (07/01 10:51) &nbsp;|&nbsp;
+    📡 实时: <a href="https://liuxiansheng.cpolar.top">https://liuxiansheng.cpolar.top</a>
 </div>
+<div id="probe-status">⏳ 正在探测实时连接...</div>
+<div id="snapshot-wrap">
 
 <div class="wrap">
 
@@ -111,7 +161,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="lg">📊</div>
     <div class="lg-t">刘先生量化虚拟盘</div>
   </div>
-  <span class="utag">🕐 07-01 09:23</span>
+  <span class="utag">🕐 07-01 10:51</span>
 </div>
 
 <div class="stats">
@@ -121,7 +171,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="pnl-group"><div class="slabel">管理资金</div><div class="sval n">1200万</div></div>
   </div>
   <div class="sbox"><div class="slabel">结算</div><div class="sval n">14</div><div class="ssub">7胜7负</div></div>
-  <div class="sbox"><div class="slabel">持仓浮盈</div><div class="sval pos">+86139</div><div class="ssub">13只持仓</div></div>
+  <div class="sbox"><div class="slabel">持仓浮盈</div><div class="sval pos">+88727</div><div class="ssub">13只持仓</div></div>
   <div class="sbox"><div class="slabel">策略数</div><div class="sval n">9</div><div class="ssub">运行中</div></div>
 </div>
 
@@ -135,8 +185,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">100.33万</b></span>
-    <span>盈亏 <b style="color:#e03131">+3282</b></span>
+    <span>当前 <b style="color:var(--text)">100.59万</b></span>
+    <span>盈亏 <b style="color:#e03131">+5934</b></span>
     <span>胜率 <b style="color:var(--text)">100% (1笔)</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 多因子综合选股: 趋势向上+低波动+放量突破20日新高的稳健强势股</div>
@@ -153,9 +203,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">3400</td>
     <td class="num">9.8万</td>
     <td class="num">28.73</td>
-    <td class="num">28.73</td>
-    <td class="pnl pos">+0.0%</td>
-    <td class="pnl pos">+0</td>
+    <td class="num">29.51</td>
+    <td class="pnl pos">+2.7%</td>
+    <td class="pnl pos">+2652</td>
     <td class="date">6天</td>
   </tr>
   
@@ -295,8 +345,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">105.01万</b></span>
-    <span>盈亏 <b style="color:#e03131">+50068</b></span>
+    <span>当前 <b style="color:var(--text)">105.82万</b></span>
+    <span>盈亏 <b style="color:#e03131">+58160</b></span>
     <span>胜率 <b style="color:var(--text)">45% (11笔)</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 MACD在0轴上方(多头区)金叉的票</div>
@@ -313,9 +363,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">6600</td>
     <td class="num">11.3万</td>
     <td class="num">17.07</td>
-    <td class="num">20.63</td>
-    <td class="pnl pos">+20.9%</td>
-    <td class="pnl pos">+23496</td>
+    <td class="num">21.30</td>
+    <td class="pnl pos">+24.8%</td>
+    <td class="pnl pos">+27918</td>
     <td class="date">6天</td>
   </tr>
   
@@ -327,9 +377,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">100</td>
     <td class="num">8.7万</td>
     <td class="num">874.54</td>
-    <td class="num">942.90</td>
-    <td class="pnl pos">+7.8%</td>
-    <td class="pnl pos">+6836</td>
+    <td class="num">950.00</td>
+    <td class="pnl pos">+8.6%</td>
+    <td class="pnl pos">+7546</td>
     <td class="date">6天</td>
   </tr>
   
@@ -341,9 +391,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">13600</td>
     <td class="num">12.5万</td>
     <td class="num">9.20</td>
-    <td class="num">9.34</td>
-    <td class="pnl pos">+1.5%</td>
-    <td class="pnl pos">+1904</td>
+    <td class="num">9.64</td>
+    <td class="pnl pos">+4.8%</td>
+    <td class="pnl pos">+5984</td>
     <td class="date">6天</td>
   </tr>
   
@@ -355,9 +405,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">6300</td>
     <td class="num">11.9万</td>
     <td class="num">18.83</td>
-    <td class="num">19.05</td>
-    <td class="pnl pos">+1.2%</td>
-    <td class="pnl pos">+1386</td>
+    <td class="num">18.70</td>
+    <td class="pnl neg">-0.7%</td>
+    <td class="pnl neg">-819</td>
     <td class="date">2天</td>
   </tr>
   
@@ -369,9 +419,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">15500</td>
     <td class="num">11.4万</td>
     <td class="num">7.36</td>
-    <td class="num">7.30</td>
-    <td class="pnl neg">-0.8%</td>
-    <td class="pnl neg">-930</td>
+    <td class="num">7.37</td>
+    <td class="pnl pos">+0.1%</td>
+    <td class="pnl pos">+155</td>
     <td class="date">2天</td>
   </tr>
   
@@ -543,8 +593,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">100.66万</b></span>
-    <span>盈亏 <b style="color:#e03131">+6557</b></span>
+    <span>当前 <b style="color:var(--text)">101.20万</b></span>
+    <span>盈亏 <b style="color:#e03131">+12017</b></span>
     <span>胜率 <b style="color:var(--text)">100% (1笔)</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 V9主轨: 筹码突破+趋势+低波动, 标准20%仓位主力配置</div>
@@ -561,9 +611,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">7000</td>
     <td class="num">20.1万</td>
     <td class="num">28.73</td>
-    <td class="num">28.73</td>
-    <td class="pnl pos">+0.0%</td>
-    <td class="pnl pos">+0</td>
+    <td class="num">29.51</td>
+    <td class="pnl pos">+2.7%</td>
+    <td class="pnl pos">+5460</td>
     <td class="date">6天</td>
   </tr>
   
@@ -707,8 +757,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">102.43万</b></span>
-    <span>盈亏 <b style="color:#e03131">+24301</b></span>
+    <span>当前 <b style="color:var(--text)">101.07万</b></span>
+    <span>盈亏 <b style="color:#e03131">+10685</b></span>
     <span>胜率 <b style="color:var(--text)">—</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 有90天未回补缺口、今日放量上涨的中线票</div>
@@ -725,9 +775,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">4400</td>
     <td class="num">19.7万</td>
     <td class="num">44.75</td>
-    <td class="num">42.69</td>
-    <td class="pnl neg">-4.6%</td>
-    <td class="pnl neg">-9064</td>
+    <td class="num">43.10</td>
+    <td class="pnl neg">-3.7%</td>
+    <td class="pnl neg">-7260</td>
     <td class="date">2天</td>
   </tr>
   
@@ -739,9 +789,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">3600</td>
     <td class="num">15.8万</td>
     <td class="num">43.78</td>
-    <td class="num">44.10</td>
-    <td class="pnl pos">+0.7%</td>
-    <td class="pnl pos">+1152</td>
+    <td class="num">44.67</td>
+    <td class="pnl pos">+2.0%</td>
+    <td class="pnl pos">+3204</td>
     <td class="date">2天</td>
   </tr>
   
@@ -753,9 +803,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">5100</td>
     <td class="num">12.7万</td>
     <td class="num">24.82</td>
-    <td class="num">26.90</td>
-    <td class="pnl pos">+8.4%</td>
-    <td class="pnl pos">+10608</td>
+    <td class="num">25.92</td>
+    <td class="pnl pos">+4.4%</td>
+    <td class="pnl pos">+5610</td>
     <td class="date">2天</td>
   </tr>
   
@@ -767,9 +817,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">5500</td>
     <td class="num">10.3万</td>
     <td class="num">18.80</td>
-    <td class="num">21.07</td>
-    <td class="pnl pos">+12.1%</td>
-    <td class="pnl pos">+12485</td>
+    <td class="num">19.81</td>
+    <td class="pnl pos">+5.4%</td>
+    <td class="pnl pos">+5555</td>
     <td class="date">2天</td>
   </tr>
   
@@ -781,9 +831,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">4400</td>
     <td class="num">8.3万</td>
     <td class="num">18.80</td>
-    <td class="num">21.07</td>
-    <td class="pnl pos">+12.1%</td>
-    <td class="pnl pos">+9988</td>
+    <td class="num">19.81</td>
+    <td class="pnl pos">+5.4%</td>
+    <td class="pnl pos">+4444</td>
     <td class="date">2天</td>
   </tr>
   
@@ -794,5 +844,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
 </div>
 
 
-<div class="ft">刘先生量化虚拟盘 · 9策略合一 · 07-01 09:23</div>
-</div></body></html>
+<div class="ft">刘先生量化虚拟盘 · 9策略合一 · 07-01 10:51</div>
+</div>
+</div>
+</body>
+</html>
