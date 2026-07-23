@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>刘先生量化虚拟盘</title>
-
+<html lang="zh"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>刘先生量化虚拟盘</title>
@@ -97,72 +92,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   .stats{grid-template-columns:1.8fr 1fr 1fr 1fr 1fr}
   .sbox.pnl{grid-column:auto}
 }
-</style>
-<style>
-#offline-bar {
-    display:none;
-    background:#1a1a2e;
-    color:#ccc;
-    padding:8px 12px;
-    text-align:center;
-    font-size:13px;
-    font-family:monospace;
-    border-bottom:2px solid #e03131;
-}
-#offline-bar a { color:#00d4ff; }
-#probe-status {
-    display:block;
-    text-align:center;
-    padding:60px 20px;
-    font-size:16px;
-    color:#888;
-    font-family:monospace;
-}
-#snapshot-wrap { display:none; }
-</style>
-<script>
-(function() {
-    var LIVE_URL = 'https://liuxiansheng.cpolar.top';
-    var HEALTH_URL = LIVE_URL + '/health?t=' + Date.now();
-    
-    function showSnapshot() {
-        document.getElementById('probe-status').style.display = 'none';
-        document.getElementById('snapshot-wrap').style.display = 'block';
-        document.getElementById('offline-bar').style.display = 'block';
-    }
-    
-    function goLive() {
-        window.location.href = LIVE_URL;
-    }
-    
-    // 用Image探测cpolar连通性(跨域无CORS限制)
-    var img = new Image();
-    var resolved = false;
-    
-    img.onload = function() {
-        if (!resolved) { resolved = true; goLive(); }
-    };
-    img.onerror = function() {
-        if (!resolved) { resolved = true; showSnapshot(); }
-    };
-    
-    // 4秒超时
-    setTimeout(function() {
-        if (!resolved) { resolved = true; showSnapshot(); }
-    }, 4000);
-    
-    img.src = HEALTH_URL;
-})();
-</script>
-</head>
-<body>
-<div id="offline-bar">
-    💻 电脑已关机 — 以下为最近快照 (07/23 10:23) &nbsp;|&nbsp;
-    📡 实时: <a href="https://liuxiansheng.cpolar.top">https://liuxiansheng.cpolar.top</a>
-</div>
-<div id="probe-status">⏳ 正在探测实时连接...</div>
-<div id="snapshot-wrap">
-
+</style></head><body>
 <div class="wrap">
 
 <div class="hd">
@@ -170,7 +100,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="lg">📊</div>
     <div class="lg-t">刘先生量化虚拟盘</div>
   </div>
-  <span class="utag">🕐 07-23 10:23</span>
+  <span class="utag">🕐 07-23 10:24</span>
 </div>
 
 <div class="stats">
@@ -180,7 +110,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="pnl-group"><div class="slabel">管理资金</div><div class="sval n">500万</div></div>
   </div>
   <div class="sbox"><div class="slabel">结算</div><div class="sval n">23</div><div class="ssub">8胜15负</div></div>
-  <div class="sbox"><div class="slabel">持仓浮盈</div><div class="sval neg">-5130</div><div class="ssub">12只持仓</div></div>
+  <div class="sbox"><div class="slabel">持仓浮盈</div><div class="sval neg">-5412</div><div class="ssub">12只持仓</div></div>
   <div class="sbox"><div class="slabel">策略数</div><div class="sval n">4</div><div class="ssub">运行中</div></div>
 </div>
 
@@ -294,8 +224,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">99.10万</b></span>
-    <span>盈亏 <b style="color:#099268">-9031</b></span>
+    <span>当前 <b style="color:var(--text)">99.05万</b></span>
+    <span>盈亏 <b style="color:#099268">-9514</b></span>
     <span>胜率 <b style="color:var(--text)">33% (21笔)</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 实时板块资金流TOP5+启动初期选股，30秒扫描/止盈12%/止损6%/移动止盈/持8天</div>
@@ -357,9 +287,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">6900</td>
     <td class="num">19.8万</td>
     <td class="num">28.68</td>
-    <td class="num">28.62</td>
-    <td class="pnl neg">-0.2%</td>
-    <td class="pnl neg">-414</td>
+    <td class="num">28.55</td>
+    <td class="pnl neg">-0.5%</td>
+    <td class="pnl neg">-897</td>
     <td class="date">07/21 13:46</td>
     <td class="date">2天</td>
   </tr>
@@ -646,8 +576,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">100.21万</b></span>
-    <span>盈亏 <b style="color:#e03131">+2077</b></span>
+    <span>当前 <b style="color:var(--text)">100.23万</b></span>
+    <span>盈亏 <b style="color:#e03131">+2278</b></span>
     <span>胜率 <b style="color:var(--text)">50% (2笔)</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 V9主轨：筹码突破+趋势+低波动，标准20%仓位主力配置。止盈20%/持25天</div>
@@ -664,9 +594,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">7000</td>
     <td class="num">19.8万</td>
     <td class="num">28.34</td>
-    <td class="num">28.87</td>
+    <td class="num">28.88</td>
     <td class="pnl pos">+1.9%</td>
-    <td class="pnl pos">+3710</td>
+    <td class="pnl pos">+3780</td>
     <td class="date">07/13 13:14</td>
     <td class="date">10天</td>
   </tr>
@@ -694,9 +624,9 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">13100</td>
     <td class="num">9.9万</td>
     <td class="num">7.58</td>
-    <td class="num">7.56</td>
-    <td class="pnl neg">-0.3%</td>
-    <td class="pnl neg">-262</td>
+    <td class="num">7.57</td>
+    <td class="pnl neg">-0.1%</td>
+    <td class="pnl neg">-131</td>
     <td class="date">07/22 10:42</td>
     <td class="date">1天</td>
   </tr>
@@ -766,7 +696,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
 </div>
 
 
-<div class="ft">刘先生量化虚拟盘 · 4策略 · 07-23 10:23</div>
+<div class="ft">刘先生量化虚拟盘 · 4策略 · 07-23 10:24</div>
 <script>
 function toggleClosed(el){
   var arrow = el.querySelector('.arrow');
@@ -782,7 +712,4 @@ function toggleClosed(el){
   }
 }
 </script>
-</div>
-</div>
-</body>
-</html>
+</div></body></html>
