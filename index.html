@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh"><head>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>刘先生量化虚拟盘</title>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>刘先生量化虚拟盘</title>
@@ -92,7 +97,72 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   .stats{grid-template-columns:1.8fr 1fr 1fr 1fr 1fr}
   .sbox.pnl{grid-column:auto}
 }
-</style></head><body>
+</style>
+<style>
+#offline-bar {
+    display:none;
+    background:#1a1a2e;
+    color:#ccc;
+    padding:8px 12px;
+    text-align:center;
+    font-size:13px;
+    font-family:monospace;
+    border-bottom:2px solid #e03131;
+}
+#offline-bar a { color:#00d4ff; }
+#probe-status {
+    display:block;
+    text-align:center;
+    padding:60px 20px;
+    font-size:16px;
+    color:#888;
+    font-family:monospace;
+}
+#snapshot-wrap { display:none; }
+</style>
+<script>
+(function() {
+    var LIVE_URL = 'https://liuxiansheng.vip.cpolar.cn';
+    var HEALTH_URL = LIVE_URL + '/health?t=' + Date.now();
+    
+    function showSnapshot() {
+        document.getElementById('probe-status').style.display = 'none';
+        document.getElementById('snapshot-wrap').style.display = 'block';
+        document.getElementById('offline-bar').style.display = 'block';
+    }
+    
+    function goLive() {
+        window.location.href = LIVE_URL;
+    }
+    
+    // 用Image探测cpolar连通性(跨域无CORS限制)
+    var img = new Image();
+    var resolved = false;
+    
+    img.onload = function() {
+        if (!resolved) { resolved = true; goLive(); }
+    };
+    img.onerror = function() {
+        if (!resolved) { resolved = true; showSnapshot(); }
+    };
+    
+    // 4秒超时
+    setTimeout(function() {
+        if (!resolved) { resolved = true; showSnapshot(); }
+    }, 4000);
+    
+    img.src = HEALTH_URL;
+})();
+</script>
+</head>
+<body>
+<div id="offline-bar">
+    💻 电脑已关机 — 以下为最近快照 (09/03 12:30) &nbsp;|&nbsp;
+    📡 实时: <a href="https://liuxiansheng.vip.cpolar.cn">https://liuxiansheng.vip.cpolar.cn</a>
+</div>
+<div id="probe-status">⏳ 正在探测实时连接...</div>
+<div id="snapshot-wrap">
+
 <div class="wrap">
 
 <div class="hd">
@@ -100,7 +170,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="lg">📊</div>
     <div class="lg-t">刘先生量化虚拟盘</div>
   </div>
-  <span class="utag">🕐 09-03 12:00</span>
+  <span class="utag">🕐 09-03 12:30</span>
 </div>
 
 <div class="stats">
@@ -2197,7 +2267,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
 </div>
 
 
-<div class="ft">刘先生量化虚拟盘 · 4策略 · 09-03 12:00</div>
+<div class="ft">刘先生量化虚拟盘 · 4策略 · 09-03 12:30</div>
 <script>
 function toggleClosed(el){
   var arrow = el.querySelector('.arrow');
@@ -2213,4 +2283,7 @@ function toggleClosed(el){
   }
 }
 </script>
-</div></body></html>
+</div>
+</div>
+</body>
+</html>
