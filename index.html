@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh"><head>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>刘先生量化虚拟盘</title>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>刘先生量化虚拟盘</title>
@@ -92,7 +97,72 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   .stats{grid-template-columns:1.8fr 1fr 1fr 1fr 1fr}
   .sbox.pnl{grid-column:auto}
 }
-</style></head><body>
+</style>
+<style>
+#offline-bar {
+    display:none;
+    background:#1a1a2e;
+    color:#ccc;
+    padding:8px 12px;
+    text-align:center;
+    font-size:13px;
+    font-family:monospace;
+    border-bottom:2px solid #e03131;
+}
+#offline-bar a { color:#00d4ff; }
+#probe-status {
+    display:block;
+    text-align:center;
+    padding:60px 20px;
+    font-size:16px;
+    color:#888;
+    font-family:monospace;
+}
+#snapshot-wrap { display:none; }
+</style>
+<script>
+(function() {
+    var LIVE_URL = 'https://liuxiansheng.vip.cpolar.cn';
+    var HEALTH_URL = LIVE_URL + '/health?t=' + Date.now();
+    
+    function showSnapshot() {
+        document.getElementById('probe-status').style.display = 'none';
+        document.getElementById('snapshot-wrap').style.display = 'block';
+        document.getElementById('offline-bar').style.display = 'block';
+    }
+    
+    function goLive() {
+        window.location.href = LIVE_URL;
+    }
+    
+    // 用Image探测cpolar连通性(跨域无CORS限制)
+    var img = new Image();
+    var resolved = false;
+    
+    img.onload = function() {
+        if (!resolved) { resolved = true; goLive(); }
+    };
+    img.onerror = function() {
+        if (!resolved) { resolved = true; showSnapshot(); }
+    };
+    
+    // 4秒超时
+    setTimeout(function() {
+        if (!resolved) { resolved = true; showSnapshot(); }
+    }, 4000);
+    
+    img.src = HEALTH_URL;
+})();
+</script>
+</head>
+<body>
+<div id="offline-bar">
+    💻 电脑已关机 — 以下为最近快照 (10/09 12:44) &nbsp;|&nbsp;
+    📡 实时: <a href="https://liuxiansheng.vip.cpolar.cn">https://liuxiansheng.vip.cpolar.cn</a>
+</div>
+<div id="probe-status">⏳ 正在探测实时连接...</div>
+<div id="snapshot-wrap">
+
 <div class="wrap">
 
 <div class="hd">
@@ -100,7 +170,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="lg">📊</div>
     <div class="lg-t">刘先生量化虚拟盘</div>
   </div>
-  <span class="utag">🕐 10-09 11:48</span>
+  <span class="utag">🕐 10-09 12:44</span>
 </div>
 
 <div class="stats">
@@ -532,8 +602,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">宁波富达</td>
     <td class="code">600724</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">房地产</td>
+    <td class="date"><span class="badge" style="margin-right:3px">房地产服务</span><span class="badge" style="margin-right:3px">房产租赁经纪</span></td>
     <td class="num">33700</td>
     <td class="num">16.9万</td>
     <td class="num">5.02</td>
@@ -547,8 +617,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">中国船舶</td>
     <td class="code">600150</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">国防军工</td>
+    <td class="date"><span class="badge" style="margin-right:3px">航海装备Ⅱ</span><span class="badge" style="margin-right:3px">航海装备Ⅲ</span></td>
     <td class="num">4200</td>
     <td class="num">16.8万</td>
     <td class="num">40.05</td>
@@ -562,8 +632,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">上海电影</td>
     <td class="code">601595</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">传媒</td>
+    <td class="date"><span class="badge" style="margin-right:3px">影视院线</span><span class="badge" style="margin-right:3px">影视动漫制作</span></td>
     <td class="num">7300</td>
     <td class="num">16.6万</td>
     <td class="num">22.74</td>
@@ -577,8 +647,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">龙版传媒</td>
     <td class="code">605577</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">传媒</td>
+    <td class="date"><span class="badge" style="margin-right:3px">出版</span><span class="badge" style="margin-right:3px">教育出版</span></td>
     <td class="num">11100</td>
     <td class="num">16.8万</td>
     <td class="num">15.10</td>
@@ -592,8 +662,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">格力电器</td>
     <td class="code">000651</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">家用电器</td>
+    <td class="date"><span class="badge" style="margin-right:3px">白色家电</span><span class="badge" style="margin-right:3px">空调</span></td>
     <td class="num">4200</td>
     <td class="num">16.2万</td>
     <td class="num">38.58</td>
@@ -2574,8 +2644,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">建设机械</td>
     <td class="code">600984</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">机械设备</td>
+    <td class="date"><span class="badge" style="margin-right:3px">工程机械</span><span class="badge" style="margin-right:3px">工程机械整机</span></td>
     <td class="num">51900</td>
     <td class="num">18.8万</td>
     <td class="num">3.62</td>
@@ -2999,7 +3069,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
 </div>
 
 
-<div class="ft">刘先生量化虚拟盘 · 4策略 · 10-09 11:48</div>
+<div class="ft">刘先生量化虚拟盘 · 4策略 · 10-09 12:44</div>
 <script>
 function toggleClosed(el){
   var arrow = el.querySelector('.arrow');
@@ -3015,4 +3085,7 @@ function toggleClosed(el){
   }
 }
 </script>
-</div></body></html>
+</div>
+</div>
+</body>
+</html>
