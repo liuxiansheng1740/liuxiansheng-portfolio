@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>刘先生量化虚拟盘</title>
-
+<html lang="zh"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>刘先生量化虚拟盘</title>
@@ -97,72 +92,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   .stats{grid-template-columns:1.8fr 1fr 1fr 1fr 1fr}
   .sbox.pnl{grid-column:auto}
 }
-</style>
-<style>
-#offline-bar {
-    display:none;
-    background:#1a1a2e;
-    color:#ccc;
-    padding:8px 12px;
-    text-align:center;
-    font-size:13px;
-    font-family:monospace;
-    border-bottom:2px solid #e03131;
-}
-#offline-bar a { color:#00d4ff; }
-#probe-status {
-    display:block;
-    text-align:center;
-    padding:60px 20px;
-    font-size:16px;
-    color:#888;
-    font-family:monospace;
-}
-#snapshot-wrap { display:none; }
-</style>
-<script>
-(function() {
-    var LIVE_URL = 'https://liuxiansheng.cpolar.top';
-    var HEALTH_URL = LIVE_URL + '/health?t=' + Date.now();
-    
-    function showSnapshot() {
-        document.getElementById('probe-status').style.display = 'none';
-        document.getElementById('snapshot-wrap').style.display = 'block';
-        document.getElementById('offline-bar').style.display = 'block';
-    }
-    
-    function goLive() {
-        window.location.href = LIVE_URL;
-    }
-    
-    // 用Image探测cpolar连通性(跨域无CORS限制)
-    var img = new Image();
-    var resolved = false;
-    
-    img.onload = function() {
-        if (!resolved) { resolved = true; goLive(); }
-    };
-    img.onerror = function() {
-        if (!resolved) { resolved = true; showSnapshot(); }
-    };
-    
-    // 4秒超时
-    setTimeout(function() {
-        if (!resolved) { resolved = true; showSnapshot(); }
-    }, 4000);
-    
-    img.src = HEALTH_URL;
-})();
-</script>
-</head>
-<body>
-<div id="offline-bar">
-    💻 电脑已关机 — 以下为最近快照 (10/20 16:25) &nbsp;|&nbsp;
-    📡 实时: <a href="https://liuxiansheng.cpolar.top">https://liuxiansheng.cpolar.top</a>
-</div>
-<div id="probe-status">⏳ 正在探测实时连接...</div>
-<div id="snapshot-wrap">
-
+</style></head><body>
 <div class="wrap">
 
 <div class="hd">
@@ -170,7 +100,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="lg">📊</div>
     <div class="lg-t">刘先生量化虚拟盘</div>
   </div>
-  <span class="utag">🕐 10-20 16:25</span>
+  <span class="utag">🕐 10-21 09:29</span>
 </div>
 
 <div class="stats">
@@ -180,7 +110,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <div class="pnl-group"><div class="slabel">管理资金</div><div class="sval n">600万</div></div>
   </div>
   <div class="sbox"><div class="slabel">结算</div><div class="sval n">245</div><div class="ssub">82胜163负</div></div>
-  <div class="sbox"><div class="slabel">持仓浮盈</div><div class="sval neg">-8424</div><div class="ssub">19只持仓</div></div>
+  <div class="sbox"><div class="slabel">持仓浮盈</div><div class="sval pos">+16074</div><div class="ssub">19只持仓</div></div>
   <div class="sbox"><div class="slabel">策略数</div><div class="sval n">6</div><div class="ssub">运行中</div></div>
 </div>
 
@@ -194,14 +124,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   </div>
   <div style="padding:7px 16px;font-size:11px;color:var(--text2);background:#fafbfc;border-bottom:1px solid var(--border-light);display:flex;gap:12px;flex-wrap:wrap">
     <span>起始 <b style="color:var(--text)">100万</b></span>
-    <span>当前 <b style="color:var(--text)">95.51万</b></span>
-    <span>盈亏 <b style="color:#099268">-44915</b></span>
+    <span>当前 <b style="color:var(--text)">97.96万</b></span>
+    <span>盈亏 <b style="color:#099268">-20416</b></span>
     <span>胜率 <b style="color:var(--text)">33% (6笔)</b></span>
   </div>
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 📅上线2026-08-05(v3) | 💡行业跨境ETF低波50/20多因子轮动，wide25标的池(8/16扩:14 A股行业+7跨境/商品+指数) | ⚙️TOP3等权/每8个交易日调仓(9/7修正:原自然日13天恰在回测最差区间,双池复核调8年化+18.0%/+18.3%均优于调13)/止损8%/移动止盈12% | 📈wide25回测:年化16.5%/胜率74.5%/回撤-5.3%/黄金集中度70.8→58.1% | ✅9/1卖点参数wide25复验:止损/跟踪/持仓带全部平台最优;✅9/7调仓周期改为真实交易日计数</div>
   
   <div style="padding:6px 16px;font-size:11px;background:linear-gradient(90deg,#f0f7ff,#faf5ff);border-bottom:1px solid var(--border-light);line-height:1.5">
-    📊 实盘运行 <b>76</b> 天 | 累计收益 <b style="color:#099268">-4.49%</b> | <b>年化 -19.8%</b>
+    📊 实盘运行 <b>77</b> 天 | 累计收益 <b style="color:#099268">-2.04%</b> | <b>年化 -9.3%</b>
   </div>
   
 
@@ -217,11 +147,11 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">305100</td>
     <td class="num">32.4万</td>
     <td class="num">1.06</td>
-    <td class="num">1.04</td>
-    <td class="pnl neg">-2.1%</td>
-    <td class="pnl neg">-6712</td>
+    <td class="num">1.05</td>
+    <td class="pnl neg">-1.2%</td>
+    <td class="pnl neg">-3966</td>
     <td class="date">09/15 09:30</td>
-    <td class="date">35天</td>
+    <td class="date">36天</td>
   </tr>
   
   <tr>
@@ -232,11 +162,11 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">252500</td>
     <td class="num">32.3万</td>
     <td class="num">1.28</td>
-    <td class="num">1.24</td>
-    <td class="pnl neg">-3.6%</td>
-    <td class="pnl neg">-11615</td>
+    <td class="num">1.32</td>
+    <td class="pnl pos">+2.8%</td>
+    <td class="pnl pos">+9090</td>
     <td class="date">09/15 09:31</td>
-    <td class="date">35天</td>
+    <td class="date">36天</td>
   </tr>
   
   <tr>
@@ -247,11 +177,11 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="num">74800</td>
     <td class="num">31.7万</td>
     <td class="num">4.23</td>
-    <td class="num">4.22</td>
-    <td class="pnl neg">-0.3%</td>
-    <td class="pnl neg">-1047</td>
+    <td class="num">4.23</td>
+    <td class="pnl pos">+0.0%</td>
+    <td class="pnl pos">+0</td>
     <td class="date">10/19 09:31</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   </tbody></table></div>
@@ -352,7 +282,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 📅上线2026-08-01 | 💡业绩预告净利润同比≥100%超预期·排除ST/假增长/北交所 | ⚙️T+1盘后选股/持10只/7天(9/1放宽)/止损5%/15%止盈+大盘MA20弱市停买(9/1)·低开过滤已回退(9/1组合级证伪有害) | 📈9/1组合级实验:现行配置-19.5%→新配置+3.9%/回撤-23.7→-7.9% | ✅9/17确认观察期延至10月三季报预告季(9月预告空窗零新样本;实盘+7.57%/18笔67%胜率=6策略第1名,记账已修可信)</div>
   
   <div style="padding:6px 16px;font-size:11px;background:linear-gradient(90deg,#f0f7ff,#faf5ff);border-bottom:1px solid var(--border-light);line-height:1.5">
-    📊 实盘运行 <b>77</b> 天 | 累计收益 <b style="color:#e03131">+6.67%</b> | <b>年化 +35.8%</b>
+    📊 实盘运行 <b>78</b> 天 | 累计收益 <b style="color:#e03131">+6.67%</b> | <b>年化 +35.3%</b>
   </div>
   
 
@@ -602,7 +532,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 📅上线2026-07-15 | 💡moneyflow_server实时板块资金流TOP5(9/7切换·东财真主力净流入,101已退役)→启动初期个股+PE评分+解禁过滤(9/8)+排除北交所(9/1) | ⚙️盘中实时·5秒卖出/30秒买入/止盈10%/止损5%/持3天 | 🔧9/10胜率优化:日内追高过滤+量比门槛1.5(97笔归因胜率31%→56%);9/17收紧追高线0.70→0.65(117笔回测:无过滤-10.5万→0.65口径+7.0万/胜率40%) | ⚠️8/12复算年化-34.4%+8/16退出侧网格全亏+9/1选股侧全亏,6策略唯一实时策略=实验田;观察期至9月底:≥50%通过/&lt;30%回滚并讨论存废</div>
   
   <div style="padding:6px 16px;font-size:11px;background:linear-gradient(90deg,#f0f7ff,#faf5ff);border-bottom:1px solid var(--border-light);line-height:1.5">
-    📊 实盘运行 <b>97</b> 天 | 累计收益 <b style="color:#099268">-14.29%</b> | <b>年化 -44.0%</b>
+    📊 实盘运行 <b>98</b> 天 | 累计收益 <b style="color:#099268">-14.29%</b> | <b>年化 -43.7%</b>
   </div>
   
 
@@ -622,7 +552,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-2.7%</td>
     <td class="pnl neg">-2331</td>
     <td class="date">10/12 09:30</td>
-    <td class="date">8天</td>
+    <td class="date">9天</td>
   </tr>
   
   <tr>
@@ -637,14 +567,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-2.7%</td>
     <td class="pnl neg">-2300</td>
     <td class="date">10/13 09:41</td>
-    <td class="date">7天</td>
+    <td class="date">8天</td>
   </tr>
   
   <tr>
     <td class="name">长盈通</td>
     <td class="code">688143</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">通信</td>
+    <td class="date"><span class="badge" style="margin-right:3px">通信设备</span><span class="badge" style="margin-right:3px">通信线缆及配套</span></td>
     <td class="num">500</td>
     <td class="num">7.7万</td>
     <td class="num">154.11</td>
@@ -652,14 +582,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+1.3%</td>
     <td class="pnl pos">+1035</td>
     <td class="date">10/19 09:32</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
     <td class="name">百纳千成</td>
     <td class="code">300291</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">传媒</td>
+    <td class="date"><span class="badge" style="margin-right:3px">影视院线</span><span class="badge" style="margin-right:3px">影视动漫制作</span></td>
     <td class="num">16600</td>
     <td class="num">8.5万</td>
     <td class="num">5.15</td>
@@ -667,14 +597,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+1.2%</td>
     <td class="pnl pos">+996</td>
     <td class="date">10/20 09:30</td>
-    <td class="date">今日</td>
+    <td class="date">1天</td>
   </tr>
   
   <tr>
     <td class="name">中视传媒</td>
     <td class="code">600088</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">传媒</td>
+    <td class="date"><span class="badge" style="margin-right:3px">影视院线</span><span class="badge" style="margin-right:3px">影视动漫制作</span></td>
     <td class="num">6400</td>
     <td class="num">8.5万</td>
     <td class="num">13.34</td>
@@ -682,7 +612,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-1.3%</td>
     <td class="pnl neg">-1152</td>
     <td class="date">10/20 09:31</td>
-    <td class="date">今日</td>
+    <td class="date">1天</td>
   </tr>
   
   </tbody></table></div>
@@ -2312,7 +2242,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 📅上线2026-07-24 | 💡券商金股共识(≥2家)+6因子打分选「不热」+ATR止损+板块去重+排除北交所(9/1)+解禁/获利盘过滤(9/8) | ⚙️T+1每日9:30/止盈20%/ATR1.5倍止损/持5只/月初第8交易日调仓+vol targeting(8/16:60日波动目标12%动态仓位) | 📈vol targeting回测:年化17.3%/回撤-11%(基线15.6%/-22%)</div>
   
   <div style="padding:6px 16px;font-size:11px;background:linear-gradient(90deg,#f0f7ff,#faf5ff);border-bottom:1px solid var(--border-light);line-height:1.5">
-    📊 实盘运行 <b>88</b> 天 | 累计收益 <b style="color:#099268">-7.50%</b> | <b>年化 -27.6%</b>
+    📊 实盘运行 <b>89</b> 天 | 累计收益 <b style="color:#099268">-7.50%</b> | <b>年化 -27.4%</b>
   </div>
   
 
@@ -2332,7 +2262,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+0.8%</td>
     <td class="pnl pos">+1003</td>
     <td class="date">10/19 09:32</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
@@ -2347,14 +2277,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-2.4%</td>
     <td class="pnl neg">-3029</td>
     <td class="date">10/19 09:32</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
     <td class="name">中航西飞</td>
     <td class="code">000768</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">国防军工</td>
+    <td class="date"><span class="badge" style="margin-right:3px">航空装备Ⅱ</span><span class="badge" style="margin-right:3px">航空装备Ⅲ</span></td>
     <td class="num">5300</td>
     <td class="num">12.4万</td>
     <td class="num">23.40</td>
@@ -2362,14 +2292,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+1.2%</td>
     <td class="pnl pos">+1431</td>
     <td class="date">10/19 09:32</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
     <td class="name">鸿路钢构</td>
     <td class="code">002541</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">建筑装饰</td>
+    <td class="date"><span class="badge" style="margin-right:3px">专业工程</span><span class="badge" style="margin-right:3px">钢结构</span></td>
     <td class="num">6100</td>
     <td class="num">12.5万</td>
     <td class="num">20.43</td>
@@ -2377,7 +2307,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-2.2%</td>
     <td class="pnl neg">-2745</td>
     <td class="date">10/19 09:33</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
@@ -2392,7 +2322,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-2.1%</td>
     <td class="pnl neg">-2610</td>
     <td class="date">10/20 09:30</td>
-    <td class="date">今日</td>
+    <td class="date">1天</td>
   </tr>
   
   </tbody></table></div>
@@ -2724,7 +2654,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 📅上线2026-08-13 | 💡券商分析师净利润预测上调≥20%(consensus法)·领先信号+解禁/获利盘过滤(9/8) | ⚙️T+1盘后选股/持5只/止盈20%/止损8%/持14天(10/8从10天上调) | 📈回测组合级:年化20.7%→22.4%/回撤-11%→-8.9%(H14,8/26+9/7+10/8三复现),8/17首笔实盘 | ✅10/8观察期满H10→14已执行(10/8-11/8为H14观察期) | 🔍9/10首3笔全亏归因=右尾型正常波动(连亏3笔概率12.5%);9/14科翔股份+23.1%止盈兑现右尾 | ⚠️右尾型+牛市放大器+样本3年</div>
   
   <div style="padding:6px 16px;font-size:11px;background:linear-gradient(90deg,#f0f7ff,#faf5ff);border-bottom:1px solid var(--border-light);line-height:1.5">
-    📊 实盘运行 <b>64</b> 天 | 累计收益 <b style="color:#099268">-4.52%</b> | <b>年化 -23.2%</b>
+    📊 实盘运行 <b>65</b> 天 | 累计收益 <b style="color:#099268">-4.52%</b> | <b>年化 -22.9%</b>
   </div>
   
 
@@ -2735,8 +2665,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">鼎通科技</td>
     <td class="code">688668</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">通信</td>
+    <td class="date"><span class="badge" style="margin-right:3px">通信设备</span><span class="badge" style="margin-right:3px">通信网络设备及器件</span></td>
     <td class="num">1100</td>
     <td class="num">17.6万</td>
     <td class="num">159.76</td>
@@ -2744,7 +2674,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+2.0%</td>
     <td class="pnl pos">+3597</td>
     <td class="date">10/19</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   </tbody></table></div>
@@ -2845,7 +2775,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <div style="padding:6px 16px;font-size:11px;color:var(--text3);background:#fcfcfd;border-bottom:1px solid var(--border-light);line-height:1.5">📋 📅上线2026-07-30 | 💡Tushare概念板块资金流TOP5→启动初期个股+PE评分+排除ST/北交所(9/1)+解禁/获利盘过滤(9/8) | ⚙️T+1盘后选股/X1组合(8/16):低开2%弃买+15%半仓止盈+余仓跟踪10%/止损4%(9/1收紧)/持8天 | 📈SL4回测年化+54.4→+87.2%(悲观-1%滑点+37.8→+64.2,回撤-10.4→-7.4%),实盘按六至七折预期</div>
   
   <div style="padding:6px 16px;font-size:11px;background:linear-gradient(90deg,#f0f7ff,#faf5ff);border-bottom:1px solid var(--border-light);line-height:1.5">
-    📊 实盘运行 <b>82</b> 天 | 累计收益 <b style="color:#099268">-8.63%</b> | <b>年化 -33.1%</b>
+    📊 实盘运行 <b>83</b> 天 | 累计收益 <b style="color:#099268">-8.63%</b> | <b>年化 -32.8%</b>
   </div>
   
 
@@ -2856,8 +2786,8 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
   <tr>
     <td class="name">中科星图</td>
     <td class="code">688568</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">计算机</td>
+    <td class="date"><span class="badge" style="margin-right:3px">IT服务Ⅱ</span><span class="badge" style="margin-right:3px">IT服务Ⅲ</span></td>
     <td class="num">5900</td>
     <td class="num">17.8万</td>
     <td class="num">30.22</td>
@@ -2865,7 +2795,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+3.2%</td>
     <td class="pnl pos">+5664</td>
     <td class="date">10/19 09:30</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
@@ -2880,14 +2810,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl neg">-3.6%</td>
     <td class="pnl neg">-6480</td>
     <td class="date">10/19 09:30</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
     <td class="name">中国电信</td>
     <td class="code">601728</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">通信</td>
+    <td class="date"><span class="badge" style="margin-right:3px">通信服务</span><span class="badge" style="margin-right:3px">电信运营商</span></td>
     <td class="num">26300</td>
     <td class="num">17.8万</td>
     <td class="num">6.78</td>
@@ -2895,14 +2825,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+1.5%</td>
     <td class="pnl pos">+2630</td>
     <td class="date">10/19 09:30</td>
-    <td class="date">1天</td>
+    <td class="date">2天</td>
   </tr>
   
   <tr>
     <td class="name">影石创新</td>
     <td class="code">688775</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">电子</td>
+    <td class="date"><span class="badge" style="margin-right:3px">消费电子</span><span class="badge" style="margin-right:3px">品牌消费电子</span></td>
     <td class="num">1800</td>
     <td class="num">17.3万</td>
     <td class="num">96.28</td>
@@ -2910,14 +2840,14 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+5.9%</td>
     <td class="pnl pos">+10296</td>
     <td class="date">10/20 09:30</td>
-    <td class="date">今日</td>
+    <td class="date">1天</td>
   </tr>
   
   <tr>
     <td class="name">豪能股份</td>
     <td class="code">603809</td>
-    <td class="date"></td>
-    <td class="date"></td>
+    <td class="date">汽车</td>
+    <td class="date"><span class="badge" style="margin-right:3px">汽车零部件</span><span class="badge" style="margin-right:3px">底盘与发动机系统</span></td>
     <td class="num">21500</td>
     <td class="num">17.9万</td>
     <td class="num">8.33</td>
@@ -2925,7 +2855,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
     <td class="pnl pos">+2.8%</td>
     <td class="pnl pos">+4945</td>
     <td class="date">10/20 09:30</td>
-    <td class="date">今日</td>
+    <td class="date">1天</td>
   </tr>
   
   </tbody></table></div>
@@ -3407,7 +3337,7 @@ td.pnl.pos{color:var(--red)}td.pnl.neg{color:var(--green)}
 </div>
 
 
-<div class="ft">刘先生量化虚拟盘 · 4策略 · 10-20 16:25</div>
+<div class="ft">刘先生量化虚拟盘 · 4策略 · 10-21 09:29</div>
 <script>
 function toggleClosed(el){
   var arrow = el.querySelector('.arrow');
@@ -3423,7 +3353,4 @@ function toggleClosed(el){
   }
 }
 </script>
-</div>
-</div>
-</body>
-</html>
+</div></body></html>
